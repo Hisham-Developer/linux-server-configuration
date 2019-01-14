@@ -5,32 +5,53 @@
 in this site I use Microsoft Azure and ubuntu server.
 ## steps:-
 ### In the beginning update and upgrader your system then you should download all the dependecnies:
-sudo apt-get install apache2
-sudo apt-get install libapache2-mod-wsgi python-dev
-sudo a2enmod wsgi
-sudo service apache2 start
-sudo apt-get install git
-sudo apt-get install python-pip
-sudo pip install virtualenv
+sudo apt-get install apache2 
+
+sudo apt-get install libapache2-mod-wsgi python-dev 
+
+sudo a2enmod wsgi 
+
+sudo service apache2 start 
+
+sudo apt-get install git 
+
+sudo apt-get install python-pip 
+
+sudo pip install virtualenv 
+
 ### then create new user name grader 
 sudo adduser grader 
-password = udacity
+
+password = udacity 
+
 #### give the grader sudo prevelagie:
-sudo vi /etc/sudoers.d/grader
+sudo vi /etc/sudoers.d/grader 
+
 press i to insert and write: grader ALL=(ALL:ALL) NOPASSWD:ALL 
-press esc and then then write :wq to save.
+
+press esc and then then write :wq to save. 
+
 ### change ssh port from 22 to 2200 
-sudo vi /etc/ssh/sshd_config
-change 22 to 2200 and save the file.
-sudo service ssh restart
+sudo vi /etc/ssh/sshd_config 
+
+change 22 to 2200 and save the file. 
+
+sudo service ssh restart 
+
 ### ssh to grader by doing 
-su - grader
-mkdir .ssh
-touch .ssh/authorized_keys
-vi .ssh/authorized_keys and put your public key and save the file.
+su - grader 
+
+mkdir .ssh 
+
+touch .ssh/authorized_keys 
+
+vi .ssh/authorized_keys and put your public key and save the file. 
+
 ### allow incoming connection: 
-sudo ufw allow 2200/tcp
-sudo ufw allow 80/tcp
+sudo ufw allow 2200/tcp 
+
+sudo ufw allow 80/tcp 
+
 sudo ufw allow 123/udp
 sudo ufw enable
 ### change timeaone to UTC by writing: 
