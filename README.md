@@ -5,6 +5,7 @@
 in this site I use Microsoft Azure and ubuntu server.
 ## steps:-
 ### In the beginning update and upgrader your system then you should download all the dependecnies:
+```
 sudo apt-get install apache2 
 
 sudo apt-get install libapache2-mod-wsgi python-dev 
@@ -18,26 +19,29 @@ sudo apt-get install git
 sudo apt-get install python-pip 
 
 sudo pip install virtualenv 
-
-### then create new user name grader 
+```
+### then create new user name grader  
+```
 sudo adduser grader 
-
+```
 password = udacity 
 
 #### give the grader sudo prevelagie:
+```
 sudo vi /etc/sudoers.d/grader 
-
+```
 press i to insert and write: grader ALL=(ALL:ALL) NOPASSWD:ALL 
 
 press esc and then then write :wq to save. 
 
 ### change ssh port from 22 to 2200 
+```
 sudo vi /etc/ssh/sshd_config 
-
+```
 change 22 to 2200 and save the file. 
-
+```
 sudo service ssh restart 
-
+```
 ### ssh to grader by doing 
 su - grader 
 
@@ -48,6 +52,7 @@ touch .ssh/authorized_keys
 vi .ssh/authorized_keys and put your public key and save the file. 
 
 ### allow incoming connection: 
+```
 sudo ufw allow 2200/tcp 
 
 sudo ufw allow 80/tcp 
@@ -55,22 +60,25 @@ sudo ufw allow 80/tcp
 sudo ufw allow 123/udp 
 
 sudo ufw enable 
+```
 
 ### change timeaone to UTC by writing: 
+```
 sudo dpkg-reconfigure tzdata 
-
+```
 press enter twice.  
 
 ### now you can enter the site using 2200 port 
+```
 ssh -p 2200 grader@item-catalog.eastus.cloudapp.azure.com 
-
+```
 ### running your app:
 first clone your app: 
 
 cd /var/www 
-
+```
 sudo mkdir catalog 
-
+```
 Change owner of the newly created catalog folder sudo chown -R grader:grader catalog 
 
 cd /catalog 
@@ -78,7 +86,7 @@ cd /catalog
 Clone your project from github git clone https://github.com/Hisham-Developer/item_catalog.git catalog 
 
 Create a catalog.wsgi file, with this content: 
-
+```
 import sys 
 
 import logging 
@@ -90,7 +98,7 @@ sys.path.insert(0, "/var/www/catalog/")
 from catalog import app as application 
 
 application.secret_key = 'super_secret_key' 
-
+```
 ### Install virtual environment
 Create a new virtual environment with sudo virtualenv venv 
 
@@ -105,8 +113,9 @@ pip install Flask
 pip install httplib2 oauth2client sqlalchemy psycopg2 sqlalchemy_utils 
 
 #### Create a new file with this : 
+```
 sudo vi /etc/apache2/sites-available/000-default.conf 
-
+```
 
 	<VirtualHost *:80>  
 
@@ -148,16 +157,17 @@ sudo vi /etc/apache2/sites-available/000-default.conf
 	
 	WSGIScriptAlias / /var/www/catalog/catalog.wsgi 
 	</VirtualHost> 
-
+```
  sudo a2ensite 000-default.conf 
- 
+ ```
  #### set up postgress 
+ ```
 sudo apt-get install libpq-dev python-dev  
 
 sudo apt-get install postgresql postgresql-contrib 
 
 sudo su - postgres 
-
+```
 psql 
 
 CREATE USER catalog WITH PASSWORD 'password'; 
@@ -180,9 +190,9 @@ exit
 python /var/www/catalog/catalog/DB.py 
 
 restart apache2 and then visit the link: 
-
+```
 sudo service apache2 restart
-
+```
 visit: 
 
 http://item-catalog.eastus.cloudapp.azure.com/
