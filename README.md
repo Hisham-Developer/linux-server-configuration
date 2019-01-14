@@ -107,6 +107,7 @@ pip install httplib2 oauth2client sqlalchemy psycopg2 sqlalchemy_utils
 #### Create a new file with this : 
 sudo vi /etc/apache2/sites-available/000-default.conf 
 
+
 <VirtualHost *:80>  
 
 	ServerName 104.211.18.214 
