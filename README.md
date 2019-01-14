@@ -124,3 +124,9 @@ sudo service apache2 restart
 
 visit: 
 http://item-catalog.eastus.cloudapp.azure.com/
+
+
+thanks to:
+https://github.com/rrjoson/udacity-linux-server-configuration
+https://github.com/adityamehra/udacity-linux-server-configuration
+
