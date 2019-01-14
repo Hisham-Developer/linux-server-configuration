@@ -108,7 +108,7 @@ pip install httplib2 oauth2client sqlalchemy psycopg2 sqlalchemy_utils
 sudo vi /etc/apache2/sites-available/000-default.conf 
 
 
-<VirtualHost *:80>  
+	<VirtualHost *:80>  
 
 	ServerName 104.211.18.214 
 	
@@ -147,8 +147,7 @@ sudo vi /etc/apache2/sites-available/000-default.conf
 	CustomLog ${APACHE_LOG_DIR}/access.log combined 
 	
 	WSGIScriptAlias / /var/www/catalog/catalog.wsgi 
-	
-</VirtualHost> 
+	</VirtualHost> 
 
  sudo a2ensite 000-default.conf 
  
