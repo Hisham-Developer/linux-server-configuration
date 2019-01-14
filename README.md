@@ -107,27 +107,48 @@ pip install httplib2 oauth2client sqlalchemy psycopg2 sqlalchemy_utils
 #### Create a new file with this : 
 sudo vi /etc/apache2/sites-available/000-default.conf 
 
-<VirtualHost *:80> 
-	ServerName 104.211.18.214
-	ServerAlias item-catalog.eastus.cloudapp.azure.com
-	ServerAdmin webmaster@104.211.18.214
-	DocumentRoot /var/www/html
-	WSGIDaemonProcess catalog python-path=/var/www/catalog:/var/www/catalog/venv/lib/python2.7/site-packages
-	WSGIProcessGroup catalog
-        WSGIScriptAlias / /var/www/catalog/catalog.wsgi
-        <Directory /var/www/catalog/catalog/>
-            Order allow,deny
-            Allow from all
-        </Directory>
-        Alias /static /var/www/catalog/catalog/static
-        <Directory /var/www/catalog/catalog/static/>
-            Order allow,deny
-            Allow from all
-    	</Directory>
-	ErrorLog ${APACHE_LOG_DIR}/error.log
-	CustomLog ${APACHE_LOG_DIR}/access.log combined
-	WSGIScriptAlias / /var/www/catalog/catalog.wsgi
-</VirtualHost>
+<VirtualHost *:80>  
+
+	ServerName 104.211.18.214 
+	
+	ServerAlias item-catalog.eastus.cloudapp.azure.com 
+	
+	ServerAdmin webmaster@104.211.18.214 
+	
+	DocumentRoot /var/www/html 
+	
+	WSGIDaemonProcess catalog python-path=/var/www/catalog:/var/www/catalog/venv/lib/python2.7/site-packages 
+	
+	WSGIProcessGroup catalog  
+	
+	WSGIScriptAlias / /var/www/catalog/catalog.wsgi 
+	
+        <Directory /var/www/catalog/catalog/> 
+	
+            Order allow,deny 
+	    
+            Allow from all 
+	    
+        </Directory> 
+	
+        Alias /static /var/www/catalog/catalog/static 
+	
+        <Directory /var/www/catalog/catalog/static/> 
+	
+            Order allow,deny 
+	    
+            Allow from all 
+	    
+    	</Directory> 
+	
+	ErrorLog ${APACHE_LOG_DIR}/error.log 
+	
+	CustomLog ${APACHE_LOG_DIR}/access.log combined 
+	
+	WSGIScriptAlias / /var/www/catalog/catalog.wsgi 
+	
+</VirtualHost> 
+
  sudo a2ensite 000-default.conf 
  
  #### set up postgress 
