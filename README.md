@@ -4,7 +4,7 @@
 #### #what I am using 
 in this site I use Microsoft Azure and ubuntu server.
 ## steps:-
-### In the beginning update and upgrader your system then you should download all the dependecnies:
+### In the beginning update and upgrade your system then you should download all the dependecnies:
 ```
 sudo apt-get install apache2 
 
@@ -32,7 +32,7 @@ sudo vi /etc/sudoers.d/grader
 ```
 press i to insert and write: grader ALL=(ALL:ALL) NOPASSWD:ALL 
 
-press esc and then then write :wq to save. 
+press esc and then write :wq to save. 
 
 ### change ssh port from 22 to 2200 
 ```
@@ -62,7 +62,7 @@ sudo ufw allow 123/udp
 sudo ufw enable 
 ```
 
-### change timeaone to UTC by writing: 
+### change timezone to UTC by writing: 
 ```
 sudo dpkg-reconfigure tzdata 
 ```
