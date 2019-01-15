@@ -37,7 +37,9 @@ press esc and then write :wq to save.
 ### change ssh port from 22 to 2200 
 ```
 sudo vi /etc/ssh/sshd_config 
-```
+``` 
+then you need to change ```  PermitRootLogin without-password to PermitRootLogin no ```  
+
 change 22 to 2200 and save the file. 
 ```
 sudo service ssh restart 
@@ -58,6 +60,8 @@ sudo ufw allow 2200/tcp
 sudo ufw allow 80/tcp 
 
 sudo ufw allow 123/udp 
+
+sudo ufw deny 22
 
 sudo ufw enable 
 ```
